@@ -7,56 +7,44 @@
         <h1>Adventure Game v1.0</h1>
         <p>Made by: Ben Davis</p>
         <script>
-            //Comment
             
-            /*1
-                2
-                3
-                4
-                5
-            */
+            Start();
             
-         /*   alert("Ding fries are done");
-            confirm("Are you going to eat those fries?");
-            prompt("How did you like your fries?");
-            alert("I ate you.");
-            alert("You are dead.");
-            confirm("You are dead, right?");
-            prompt("say somthing!");
-            confirm("Can you speak?")
-            prompt("Any last words?")*/
-            
-            var favColor = prompt("What is your favorite color?").toLowerCase();
-            
-            if(favColor == "blue"){
-                alert("The sky is blue!");
-            }
-            else if(favColor == "green"){
-                alert("Nice choice!");
-            }
-            else if(favColor == "purple"){
-                alert("Purple is nice!");
-            }
-            else if(favColor == "red"){
-                alert("Green is the best!");
-            }
-            else if(favColor == "yellow"){
-                alert("Green is the best!");
-            }
-            else if(favColor == "orange"){
-                alert("Green is the best!");
-            }
-            else if(favColor == "black"){
-                alert("Green is the best!");
-            }
-            else if(favColor == "weiss"){
-                alert("Das est gute ya!");
-            }
-            else{
-                alert("That is not a color!!!");
+            function Start(){
+                
+                var playerName = prompt("What is your name child")
+                
+                alert("Wlecome, " + playerName + ", To the world of Lithia!");
+                
+                var startGame = confirm("Are you rady for this?!");
+                
+                if(startGame){
+                    Town();
+                }
+                else{
+                    alert("You were never born!  Bad End.")
+                }
             }
             
-            
+            function Town(){
+                var town = prompt("You arrive at a small town.  There is a shop, inn, and stable.  Nothing else of intrest.").toLowerCase();
+                
+                switch(town){
+                    case "shop":
+                        alert("You enter the shop.  The walls are lined with goods: swords, shilds, arrows, bows, and other misilanios things.  It takes you a moment to relize you have no money and leave hoping you didn't embarace your self.");
+                           
+                        break;
+                    case "inn":
+                alert("Entering the inn you are quikly greeted by a young woman working in the main room.  'Ah, welcome, how can I help you'  Realizing any help will likly cost money you leave giving her no response.");
+                break;
+                case "stable":
+                alert("You have a cripling fear of horeses and decide not to aproach the building.");
+                    break;
+                default:
+                alert("There is no " + town);
+                break;
+                           }
+            }
 
         </script>
     </body>
