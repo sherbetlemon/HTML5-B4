@@ -8,7 +8,7 @@
         <p>Made by: Ben Davis</p>
         <script>
             
-            Start();
+            /*Start();
             
             function Start(){
                 
@@ -32,20 +32,62 @@
                 switch(town){
                     case "shop":
                         alert("You enter the shop.  The walls are lined with goods: swords, shilds, arrows, bows, and other misilanios things.  It takes you a moment to relize you have no money and leave hoping you didn't embarace your self.");
-                           
+                        Town();
                         break;
                     case "inn":
                 alert("Entering the inn you are quikly greeted by a young woman working in the main room.  'Ah, welcome, how can I help you'  Realizing any help will likly cost money you leave giving her no response.");
+                        Town();
                 break;
                 case "stable":
                 alert("You have a cripling fear of horeses and decide not to aproach the building.");
+                        Town();
                     break;
+                    case "leave":
+                        alert("You leave the town.");
+                        break;
                 default:
                 alert("There is no " + town);
+                        Town();
                 break;
                            }
             }
-
+*/
+            Begin();
+            
+            function Begin(){
+                var playerGender = prompt("You stare at the void that surrounds you, or, rather, is you.  Alone, you are alone, though, as it is all you have ever known, you do not feel lonely.  You simply are.  That is until a voice pierced the silence of your void, it had no distinguished gender, though you had no concept of such things.  “The world needs a champion.”  You had no idea what world it spoke of.  “I can feel your power and believe I can mold you into that champion.  However, before that you must decide upon your mortal gender.  Male or female?”  Still you have no concept of this idea but nonetheless  you answer…    (Male/Female)").toLowerCase();
+                
+                switch(playerGender){
+                    case "male":
+                        alert("Without the use of words you somehow convey your choice.  “Ah, I see.  Male it is.”  As these words filled your void your ability to form thoughts began to fade, it was a sensation you had never felt before, and it consumed you.");
+                        alert("When your thoughts returned you realized things were different.  Your mind was now filled with all kinds of new information.  The first was feeling.  Unlike before you felt contained and shaped, no longer infinite, but not trapped.  You could also feel things, the hard ground to your back, a light breeze tickling your new skin, and a heavenly warmth that blanketed your body.");
+                        alert("Next was the auditory input.  Before now the only thing you had ever heard was the voice that sent you here, but now the sounds of the calm breeze blowing through the leafs of surrounding trees as well as the chirps of birds that nested within them.");
+                        alert("Then there was the image before you, the bright light of the sun that was a complete contrast to the void you knew, the green of the tree’s leaves, and the expansive blue sky.");
+                        alert("These new experiences along with taste, smell, and basic information that all assaulted your mind where very overwhelming alone not to mention all at once.  So, you lay there nude in a forest for hours, just processing all the information.");
+                        alert("By the time you gained control of your new body the sun had begun to set.");
+                        alert("Finally getting up from the forest floor you stretch your limbs to get a feel of this mortal.  Glancing down at yourself you have a very toned body, or at least above average from what your new information tells you, but your muscle mass isn’t the problem at the moment.");
+                        alert("You are naked, and, once again according to the information placed within your mind, that is unacceptable.");
+                        var clothing = prompt("Searching your mind you conjure an image of acceptable clothing.  Really anything would be better than your current ‘attire’.  (Cloak/Armor)").toLowerCase();
+                        switch(clothing){
+                            case "cloak":
+                                alert("Your thoughts draw up a hooded cloak that could easily cover your entire body.  Where you will find such clothing is beyond you.");
+                                break;
+                            case "armor":
+                                alert("Your thoughts draw up a suit of armor that could easily cover your entire body.  Where you will find such clothing is beyond you.");
+                                break;
+                            default:
+                                alert(clothing + " is not an option.")
+                                break;
+                        alert("Your contemplation of this dilemma was halted as a pain unlike anything you had felt before, though you had never felt any pain before, coated your entire body, causing you to drop to your hands and knees.  Your vision blurred, making it difficult to observe the pitch darkness that seeped from your very pours.  The black substance that forced its way out of your body morphed, and as the pain subsided, you could see that it had taken the shape you had imagined not moments ago.");
+                                       }
+                        break;
+                    case "female":
+                        alert("Yet to be added.");
+                        break;
+                    default:
+                        alert(playerGender + " was not a choice.")
+                                   }
+            }
         </script>
     </body>
 </html>
