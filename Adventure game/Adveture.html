@@ -52,7 +52,7 @@
                            }
             }
 */
-            Begin();
+            /*Begin();
             
             function Begin(){
                 var playerGender = prompt("You stare at the void that surrounds you, or, rather, is you.  Alone, you are alone, though, as it is all you have ever known, you do not feel lonely.  You simply are.  That is until a voice pierced the silence of your void, it had no distinguished gender, though you had no concept of such things.  “The world needs a champion.”  You had no idea what world it spoke of.  “I can feel your power and believe I can mold you into that champion.  However, before that you must decide upon your mortal gender.  Male or female?”  Still you have no concept of this idea but nonetheless  you answer…    (Male/Female)").toLowerCase();
@@ -87,6 +87,29 @@
                     default:
                         alert(playerGender + " was not a choice.")
                                    }
+            }*/
+            Go();
+            
+            Boolean trueNightMare = false;
+            
+            var inventory = {
+                woodenSword:0,
+                Skirmish:0,
+            }
+            
+            function Go(){
+                var name = prompt("'Hey you, young one!'  A voice calls to you.  'What is your name?'  You have no idea where tis voice comes from, but you give it an answer nontheless.");
+                if(name == "Reuel"){
+                    alert("'Ah, Reuel, I thought I recognised that face.  I have somthing for you.'");
+                    alert("YOU RECIVED SKIRMISH!: This blade has is verry heavy, but with your training you handle it effortlessly.");
+                }
+                else{
+                    alert(name + " huh, such an original name.");
+                }
+                alert("'I wish to send you on an adventure for no aperent reason.  I give you no objective, but to explore, and maby along the way you will discover an objective of your own.  Now go!'");
+                alert("'Oh, wait, before you go take this, it's dangerous alone.'");
+                alert("YOU RECIVED A WOODEN SWORD!: The edge of this stick is rigid and only slightly sharp.");
+                
             }
         </script>
     </body>
