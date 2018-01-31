@@ -88,20 +88,25 @@
                         alert(playerGender + " was not a choice.")
                                    }
             }*/
-            Go();
             
-            Boolean trueNightMare = false;
             
+            var trueNightMare = false;
+            var field = false;
             var inventory = {
                 woodenSword:0,
                 Skirmish:0,
             }
+             var skirmish = false;
+             var woodenSword = false;
+            
+            Go();
             
             function Go(){
                 var name = prompt("'Hey you, young one!'  A voice calls to you.  'What is your name?'  You have no idea where tis voice comes from, but you give it an answer nontheless.");
                 if(name == "Reuel"){
                     alert("'Ah, Reuel, I thought I recognised that face.  I have somthing for you.'");
                     alert("YOU RECIVED SKIRMISH!: This blade has is verry heavy, but with your training you handle it effortlessly.");
+                    skirmish = true;
                 }
                 else{
                     alert(name + " huh, such an original name.");
@@ -109,6 +114,33 @@
                 alert("'I wish to send you on an adventure for no aperent reason.  I give you no objective, but to explore, and maby along the way you will discover an objective of your own.  Now go!'");
                 alert("'Oh, wait, before you go take this, it's dangerous alone.'");
                 alert("YOU RECIVED A WOODEN SWORD!: The edge of this stick is rigid and only slightly sharp.");
+                woodenSword = true;
+                alert("After a brief moment of silence you decide the voice has nothing left to say.  You wander out into the unknown world.");
+                
+                Field();
+                
+                
+                function Field(){
+                    
+                    if(field == false){
+                        
+                        field = true;
+                        var direction = prompt("The first place you come to is a vast open field with lushus green grass.  To the north is a small town, to the west is a hevealy wooded area, to the east is a rocky mountonous area, a to the south (the direction you came from) is a solid black wall that seems to etend forever from east to west like a border to the very world.  Now where to go...").toLowerCase();
+                        
+                        switch(direction){
+                            case "town":
+                                Town();
+                                break;
+                                        }
+                    }
+                    else{
+                        direction = prompt("North - town.  West - woods.  East - mountans.  South - wall.");
+                    }
+                }
+                function Town(){
+                    alert("you leave town.");
+                    Field();
+                }
                 
             }
         </script>
