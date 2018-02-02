@@ -88,16 +88,19 @@
                         alert(playerGender + " was not a choice.")
                                    }
             }*/
-            
+            //Next line = \n
             
             var trueNightMare = false;
-            var field = false;
+            var field = 0;
+            //Java script Object for inventory
             var inventory = {
                 woodenSword:0,
                 Skirmish:0,
+                steelSword:0,
+                paperArmor:0,
+                treeBarkSheild:0,
+                mon:100,
             }
-             var skirmish = false;
-             var woodenSword = false;
             
             Go();
             
@@ -106,7 +109,7 @@
                 if(name == "Reuel"){
                     alert("'Ah, Reuel, I thought I recognised that face.  I have somthing for you.'");
                     alert("YOU RECIVED SKIRMISH!: This blade has is verry heavy, but with your training you handle it effortlessly.");
-                    skirmish = true;
+                    inventory.Skirmish++;
                 }
                 else{
                     alert(name + " huh, such an original name.");
@@ -114,7 +117,7 @@
                 alert("'I wish to send you on an adventure for no aperent reason.  I give you no objective, but to explore, and maby along the way you will discover an objective of your own.  Now go!'");
                 alert("'Oh, wait, before you go take this, it's dangerous alone.'");
                 alert("YOU RECIVED A WOODEN SWORD!: The edge of this stick is rigid and only slightly sharp.");
-                woodenSword = true;
+                inventory.woodenSword++;
                 alert("After a brief moment of silence you decide the voice has nothing left to say.  You wander out into the unknown world.");
                 
                 Field();
@@ -122,7 +125,7 @@
                 
                 function Field(){
                     
-                    if(field == false){
+                    if(field < "1"){
                         
                         field = true;
                         var direction = prompt("The first place you come to is a vast open field with lushus green grass.  To the north is a small town, to the west is a hevealy wooded area, to the east is a rocky mountonous area, a to the south (the direction you came from) is a solid black wall that seems to etend forever from east to west like a border to the very world.  Now where to go...").toLowerCase();
@@ -131,13 +134,48 @@
                             case "town":
                                 Town();
                                 break;
+                            default:
+                                alert("You cannot see that from here.");
+                                Field();
+                                break;
                                         }
                     }
                     else{
-                        direction = prompt("North - town.  West - woods.  East - mountans.  South - wall.");
+                        direction = prompt("North - town.  West - woods.  East - mountans.  South - wall.").toLowerCase();
+                        
+                        switch(direction){
+                                case"town":
+                                Town();
+                                break;
+                                
+                                        }
                     }
                 }
                 function Town(){
+                    var townPlace = prompt("You enter town.").toLowerCase();
+                    
+                    switch(townPlace){
+                        case "shop":
+                            var shop = prompt("Buy somthing will ya?! \n Steel sword - 1000 \n Paper armor - 5 \n Tree bark shield - 13 \n Paper sword - 1 \n You have - " + inventory.mon).toLowerCase();
+                            if(shop == "steel sword" && inventory.mon >= 1000){
+                                alert("YOU BOUGHT A STEEL SWORD!:  The edge is incredibly sharp and the blade is heavy but well balanced.");
+                                inventory.steelSword++;
+                                alert("you leave the shop.");
+                                Town();
+                                else if(shop == "paper armor" && inventory.mon >= 5){
+                                    alert
+                                }
+                            }
+                            break;
+                        case "leave":
+                            alert("you leave");
+                            Field();
+                            break;
+                        default:
+                            alert("That is not a place!");
+                            Town();
+                            break;
+                                    }
                     alert("you leave town.");
                     Field();
                 }
