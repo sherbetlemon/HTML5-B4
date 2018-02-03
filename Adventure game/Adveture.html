@@ -122,6 +122,38 @@
                 
                 Field();
                 
+                function Shop(){
+                    var shop = prompt("Buy somthing will ya?! \n Steel sword - 1000 \n Paper armor - 5 \n Tree bark shield - 13 \n Paper sword - 1 \n You have - " + inventory.mon + "\n LEAVE - l").toLowerCase();
+                            if(shop == "steel sword" && inventory.mon >= 1000){
+                                alert("YOU BOUGHT A STEEL SWORD!:  The edge is incredibly sharp and the blade is heavy but well balanced.");
+                                inventory.steelSword++;
+                                inventory.mon = inventory.mon - 1000;
+                                alert("you leave the shop.");
+                                Town();
+                            }
+                    else if(shop == "steel sword" && inventory.mon < 1000){
+                        alert("You can't afford that!");
+                        Shop();
+                    }
+                            else if(shop == "paper armor" && inventory.mon >= 5){
+                                alert("YOU BOUGHT PAPER ARMOR!: It doesn't look like it will do much.");
+                                inventory.paperArmor++;
+                                inventory.mon = inventory.mon - 5;
+                                alert("You now have $" + inventory.mon);
+                                alert("You leave the shop.");
+                                Town()
+                                }
+                    else if(shop == "l"){
+                        alert("You leave the shop");
+                    }
+                                else{
+                                    alert("We don't sell that here now.")
+                                    Shop();
+                                    
+                                }
+                            
+                }
+                
                 
                 function Field(){
                     
@@ -135,7 +167,7 @@
                                 Town();
                                 break;
                             default:
-                                alert("You cannot see that from here.");
+                                alert("You cannot see that from here or it doesn't exist yet.");
                                 Field();
                                 break;
                                         }
@@ -152,20 +184,12 @@
                     }
                 }
                 function Town(){
-                    var townPlace = prompt("You enter town.").toLowerCase();
+                    var townPlace = prompt("You enter town.  There is a shop.").toLowerCase();
                     
                     switch(townPlace){
                         case "shop":
-                            var shop = prompt("Buy somthing will ya?! \n Steel sword - 1000 \n Paper armor - 5 \n Tree bark shield - 13 \n Paper sword - 1 \n You have - " + inventory.mon).toLowerCase();
-                            if(shop == "steel sword" && inventory.mon >= 1000){
-                                alert("YOU BOUGHT A STEEL SWORD!:  The edge is incredibly sharp and the blade is heavy but well balanced.");
-                                inventory.steelSword++;
-                                alert("you leave the shop.");
-                                Town();
-                                else if(shop == "paper armor" && inventory.mon >= 5){
-                                    alert
-                                }
-                            }
+                            Shop();
+                            
                             break;
                         case "leave":
                             alert("you leave");
