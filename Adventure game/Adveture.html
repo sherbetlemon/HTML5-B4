@@ -99,6 +99,7 @@
                 steelSword:0,
                 paperArmor:0,
                 treeBarkSheild:0,
+                paperSword:0,
                 mon:100,
             }
             
@@ -108,7 +109,7 @@
                 var name = prompt("'Hey you, young one!'  A voice calls to you.  'What is your name?'  You have no idea where tis voice comes from, but you give it an answer nontheless.");
                 if(name == "Reuel"){
                     alert("'Ah, Reuel, I thought I recognised that face.  I have somthing for you.'");
-                    alert("YOU RECIVED SKIRMISH!: This blade has is verry heavy, but with your training you handle it effortlessly.");
+                    alert("YOU RECIVED SKIRMISH!:\n This blade has is verry heavy, but with your training you handle it effortlessly.");
                     inventory.Skirmish++;
                 }
                 else{
@@ -116,50 +117,20 @@
                 }
                 alert("'I wish to send you on an adventure for no aperent reason.  I give you no objective, but to explore, and maby along the way you will discover an objective of your own.  Now go!'");
                 alert("'Oh, wait, before you go take this, it's dangerous alone.'");
-                alert("YOU RECIVED A WOODEN SWORD!: The edge of this stick is rigid and only slightly sharp.");
+                alert("YOU RECIVED A WOODEN SWORD!:\n The edge of this stick is rigid and only slightly sharp.");
                 inventory.woodenSword++;
                 alert("After a brief moment of silence you decide the voice has nothing left to say.  You wander out into the unknown world.");
                 
                 Field();
                 
-                function Shop(){
-                    var shop = prompt("Buy somthing will ya?! \n Steel sword - 1000 \n Paper armor - 5 \n Tree bark shield - 13 \n Paper sword - 1 \n You have - " + inventory.mon + "\n LEAVE - l").toLowerCase();
-                            if(shop == "steel sword" && inventory.mon >= 1000){
-                                alert("YOU BOUGHT A STEEL SWORD!:  The edge is incredibly sharp and the blade is heavy but well balanced.");
-                                inventory.steelSword++;
-                                inventory.mon = inventory.mon - 1000;
-                                alert("you leave the shop.");
-                                Town();
-                            }
-                    else if(shop == "steel sword" && inventory.mon < 1000){
-                        alert("You can't afford that!");
-                        Shop();
-                    }
-                            else if(shop == "paper armor" && inventory.mon >= 5){
-                                alert("YOU BOUGHT PAPER ARMOR!: It doesn't look like it will do much.");
-                                inventory.paperArmor++;
-                                inventory.mon = inventory.mon - 5;
-                                alert("You now have $" + inventory.mon);
-                                alert("You leave the shop.");
-                                Town()
-                                }
-                    else if(shop == "l"){
-                        alert("You leave the shop");
-                    }
-                                else{
-                                    alert("We don't sell that here now.")
-                                    Shop();
-                                    
-                                }
-                            
-                }
+                
                 
                 
                 function Field(){
                     
                     if(field < "1"){
                         
-                        field = true;
+                        field++;
                         var direction = prompt("The first place you come to is a vast open field with lushus green grass.  To the north is a small town, to the west is a hevealy wooded area, to the east is a rocky mountonous area, a to the south (the direction you came from) is a solid black wall that seems to etend forever from east to west like a border to the very world.  Now where to go...").toLowerCase();
                         
                         switch(direction){
@@ -172,13 +143,33 @@
                                 break;
                                         }
                     }
-                    else{
-                        direction = prompt("North - town.  West - woods.  East - mountans.  South - wall.").toLowerCase();
+                    else if(field = "3"){
+                        direction = prompt("As you visit the field for the third time you notice somthing different.  Where as before it was always compleatly empty, now, along with the lushus grass, you see a small green gelatinous creature wandering near the center.  You still have a clear view of all areas. \n Town \n Woods \n Mountans \n Jelly");
                         
                         switch(direction){
                                 case"town":
                                 Town();
                                 break;
+                                case"jelly":
+                                alert("You aproach the Jelly Friend.")
+                                var fight = prompt("As you grow near to the Jelly Friend you can make out a happy smiling face on its front.  It seems compleatly pasive.  You debate attaking it or simply leaving.");
+                                
+                            default:
+                                alert("That is not accesible fom here, or does not exist.");
+                                Field();
+                        
+                    }
+                    else{
+                        field++;
+                        direction = prompt("North - town  \nWest - woods  \nEast - mountans  \nSouth - wall").toLowerCase();
+                        
+                        switch(direction){
+                                case"town":
+                                Town();
+                                break;
+                            default:
+                                alert("That is not accesible fom here, or does not exist.");
+                                Field();
                                 
                                         }
                     }
@@ -202,6 +193,53 @@
                                     }
                     alert("you leave town.");
                     Field();
+                }
+                
+                
+                
+                function Shop(){
+                    var shop = prompt("Buy somthing will ya?! \n You have - $" + inventory.mon + " \n Steel sword - $1000 \n Paper armor - $5 \n Tree bark shield - $13 \n Paper sword - $1 \n LEAVE - l").toLowerCase();
+                            if(shop == "steel sword" && inventory.mon >= 1000){
+                                alert("YOU BOUGHT A STEEL SWORD!:\n  The edge is incredibly sharp and the blade is heavy but well balanced.");
+                                inventory.steelSword++;
+                                inventory.mon = inventory.mon - 1000;
+                                
+                            }
+                    else if(shop == "steel sword" && inventory.mon < 1000){
+                        alert("You can't afford that!");
+                        Shop();
+                    }
+                            else if(shop == "paper armor" && inventory.mon >= 5){
+                                alert("YOU BOUGHT PAPER ARMOR!:\n It doesn't look like it will do much.");
+                                inventory.paperArmor++;
+                                inventory.mon = inventory.mon - 5;
+                                
+                                }
+                    else if(shop == "tree bark shield" && inventory.mon >= 13){
+                        alert("YOU BOUGHT A TREE BARK SHIELD!:\n Is surface is quite flakey, One might get a sliver from it.  It also looks like it could burn esaly.");
+                        inventory.treeBarkSheild++;
+                        inventory.mon = inventory.mon - 13;
+                        
+                    }
+                    else if(shop == "paper sword" && inventory.mon >= 1){
+                        alert("YOU BOUGHT A PAPER SWORD!:\n It is verry doubtful that it will cut any thing.  You'd probable be better off bare handed.");
+                        inventory.paperSword++;
+                        inventory.mon = inventory.mon - 1;
+                        
+                    }
+                    else if(shop == "l" || "leave"){
+                        alert("You leave the shop");
+                        Town();
+                    }
+                                else{
+                                    alert("We don't sell that here now.")
+                                    Shop();
+                                    
+                                }
+                    alert("You now have $" + inventory.mon);
+                        alert("You leave the shop.");
+                        Town();
+                            
                 }
                 
             }
