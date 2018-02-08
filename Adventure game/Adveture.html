@@ -130,12 +130,17 @@
                     
                     if(field < "1"){
                         
-                        field++;
-                        var direction = prompt("The first place you come to is a vast open field with lushus green grass.  To the north is a small town, to the west is a hevealy wooded area, to the east is a rocky mountonous area, a to the south (the direction you came from) is a solid black wall that seems to etend forever from east to west like a border to the very world.  Now where to go...").toLowerCase();
+                        
+                        var direction = prompt("The first place you come to is a vast open field with lushus green grass.  To the north is a small town, to the west is a hevealy wooded area, to the east is a rocky mountonous area, a to the south (the direction you came from) is a solid black wall that seems to etend forever from east to west like a border to the very world.  Now where to go...\n N - town\n W - woods\n E - mountains").toLowerCase();
                         
                         switch(direction){
-                            case "town":
+                            case "n":
+                                field++;
                                 Town();
+                                break;
+                            case "w":
+                                field++;
+                                Woods();
                                 break;
                             default:
                                 alert("You cannot see that from here or it doesn't exist yet.");
@@ -143,29 +148,41 @@
                                 break;
                                         }
                     }
-                    else if(field = "3"){
-                        direction = prompt("As you visit the field for the third time you notice somthing different.  Where as before it was always compleatly empty, now, along with the lushus grass, you see a small green gelatinous creature wandering near the center.  You still have a clear view of all areas. \n Town \n Woods \n Mountans \n Jelly");
+                    else if(field == "2"){
+                        direction = prompt("As you visit the field for the third time you notice somthing different.  Where as before it was always compleatly empty, now, along with the lushus grass, you see a small green gelatinous creature wandering near the center.  You still have a clear view of all areas. \n N - town \n W - woods \n E - mountans \nJ - Jelly");
                         
                         switch(direction){
-                                case"town":
+                                case"n":
+                                field++;
                                 Town();
                                 break;
-                                case"jelly":
-                                alert("You aproach the Jelly Friend.")
+                                case"j":
+                                alert("You aproach the Jelly Friend.");
                                 var fight = prompt("As you grow near to the Jelly Friend you can make out a happy smiling face on its front.  It seems compleatly pasive.  You debate attaking it or simply leaving.");
+                                break;
+                                case"w":
+                                field++;
+                                Woods();
+                                break;
                                 
                             default:
                                 alert("That is not accesible fom here, or does not exist.");
                                 Field();
+                                        }
                         
                     }
                     else{
-                        field++;
-                        direction = prompt("North - town  \nWest - woods  \nEast - mountans  \nSouth - wall").toLowerCase();
+                        
+                        direction = prompt("N - town  \nW - woods  \nE - mountans  \nS - wall").toLowerCase();
                         
                         switch(direction){
-                                case"town":
+                                case"n":
+                                field++;
                                 Town();
+                                break;
+                                case"w":
+                                field++;
+                                Woods();
                                 break;
                             default:
                                 alert("That is not accesible fom here, or does not exist.");
@@ -175,14 +192,14 @@
                     }
                 }
                 function Town(){
-                    var townPlace = prompt("You enter town.  There is a shop.").toLowerCase();
+                    var townPlace = prompt("You enter town.  There is a shop. Back to the south is the field. \n Shop - shop \n S - field").toLowerCase();
                     
                     switch(townPlace){
                         case "shop":
                             Shop();
                             
                             break;
-                        case "leave":
+                        case "s":
                             alert("you leave");
                             Field();
                             break;
@@ -198,30 +215,30 @@
                 
                 
                 function Shop(){
-                    var shop = prompt("Buy somthing will ya?! \n You have - $" + inventory.mon + " \n Steel sword - $1000 \n Paper armor - $5 \n Tree bark shield - $13 \n Paper sword - $1 \n LEAVE - l").toLowerCase();
-                            if(shop == "steel sword" && inventory.mon >= 1000){
+                    var shop = prompt("Buy somthing will ya?! \n You have - $" + inventory.mon + " \n1 Steel sword - $1000 \n2 Paper armor - $5 \n3 Tree bark shield - $13 \n4 Paper sword - $1 \nL - LEAVE").toLowerCase();
+                            if(shop == "1" && inventory.mon >= 1000){
                                 alert("YOU BOUGHT A STEEL SWORD!:\n  The edge is incredibly sharp and the blade is heavy but well balanced.");
                                 inventory.steelSword++;
                                 inventory.mon = inventory.mon - 1000;
                                 
                             }
-                    else if(shop == "steel sword" && inventory.mon < 1000){
+                    else if(shop == "1" && inventory.mon < 1000){
                         alert("You can't afford that!");
                         Shop();
                     }
-                            else if(shop == "paper armor" && inventory.mon >= 5){
+                            else if(shop == "2" && inventory.mon >= 5){
                                 alert("YOU BOUGHT PAPER ARMOR!:\n It doesn't look like it will do much.");
                                 inventory.paperArmor++;
                                 inventory.mon = inventory.mon - 5;
                                 
                                 }
-                    else if(shop == "tree bark shield" && inventory.mon >= 13){
+                    else if(shop == "3" && inventory.mon >= 13){
                         alert("YOU BOUGHT A TREE BARK SHIELD!:\n Is surface is quite flakey, One might get a sliver from it.  It also looks like it could burn esaly.");
                         inventory.treeBarkSheild++;
                         inventory.mon = inventory.mon - 13;
                         
                     }
-                    else if(shop == "paper sword" && inventory.mon >= 1){
+                    else if(shop == "4" && inventory.mon >= 1){
                         alert("YOU BOUGHT A PAPER SWORD!:\n It is verry doubtful that it will cut any thing.  You'd probable be better off bare handed.");
                         inventory.paperSword++;
                         inventory.mon = inventory.mon - 1;
@@ -240,6 +257,16 @@
                         alert("You leave the shop.");
                         Town();
                             
+                }
+                
+                function Woods(){
+                    alert("You enter the woods.");
+                    var direction = prompt("There doesn't seem to be much here, just trees.  Back to the east is the field.  To the west you can hear the sound of running water.  To the north apears to be more trees.  The south is still blocked by the wall of black.\n E - field \n W - river end \n N - more woods").toLowerCase();
+                    switch(direction){
+                        case "e":
+                            Field();
+                            break;
+                    }
                 }
                 
             }
