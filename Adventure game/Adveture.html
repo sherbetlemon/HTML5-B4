@@ -157,9 +157,10 @@
                                 Town();
                                 break;
                                 case"j":
-                                alert("You aproach the Jelly Friend.");
-                                var fight = prompt("As you grow near to the Jelly Friend you can make out a happy smiling face on its front.  It seems compleatly pasive.  You debate attaking it or simply leaving.");
+                                Jelly();
                                 break;
+                                
+                                
                                 case"w":
                                 field++;
                                 Woods();
@@ -168,6 +169,7 @@
                             default:
                                 alert("That is not accesible fom here, or does not exist.");
                                 Field();
+                                break;
                                         }
                         
                     }
@@ -267,6 +269,54 @@
                             Field();
                             break;
                     }
+                }
+                function Jelly(){
+                    field++;
+                    alert("You aproach the Jelly Friend.");
+                                var fight = prompt("As you grow near to the Jelly Friend you can make out a happy smiling face on its front.  It seems compleatly pasive.  You debate attacking it or simply leaving.\n A - Attack\n L - Leave").toLowerCase();
+                                switch(fight){
+                                        case"a":
+                                        var jellyFriend = 10000
+                                        JellyBattle();
+                                        
+                                                     }
+                                        
+                                        
+                                        break;
+                                        case"l":
+                                        alert("You decide not to bother the poor creature and leave.");
+                                        Field();
+                                        break;
+                                        default:
+                                        alert("You can't do that.");
+                                        Jelly();
+                                        break;
+                    function JellyBattle(){
+                        if (jellyFriend <= "0"){
+                            alert("You defeated the jelly friend and gained lots of money!!! \n  + $100,000,000,000");
+                        }
+                        else {
+                            var weapon = prompt("Attack with what?\n 1 - Wooden sword \n 2 - Steel sword \n 3 -Paper sword \n 4 - Fist \n 5 - ?").toLowerCase();
+                                        if (weapon == "1" && inventory.woodenSword > "0"){
+                                            jellyFriend = jellyFriend - 10;
+                                            trueNightMare = true;
+                                            alert("You slash the blob with you're wooden sword.  Its happy expretion doesn't change, but what does change if far more frightning.");
+                                            var run = prompt("A sort of stem growing from the top of the creature pulls up, lifting a terrifying extention from the earth.  You take a step back from the True Nightmare, seriously considering running. \n R - RUN! \n F - FIGHT!")
+                                        }
+                            if (weapon == "2" && inventory.steelSword > "0"){
+                                            jellyFriend = jellyFriend - 1000;
+                                            trueNightMare = true;
+                                            alert("You slash the blob with you're steel sword.  Its happy expretion doesn't change, but what does change if far more frightning.");
+                                            var run = prompt("A sort of stem growing from the top of the creature pulls up, lifting a terrifying extention from the earth.  You take a step back from the True Nightmare, seriously considering running. \n R - RUN! \n F - FIGHT!")
+                                        }
+                        }
+                        function TrueNightmareBattle(){
+                            
+                        }
+                    }
+                                        
+                                            }
+                    
                 }
                 
             }
