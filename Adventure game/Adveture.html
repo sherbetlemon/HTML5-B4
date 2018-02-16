@@ -195,17 +195,19 @@
                     }
                 }
                 function Town(){
-                    var townPlace = prompt("You enter town.  There is a shop. Back to the south is the field. \n Shop - shop \n S - field").toLowerCase();
+                    var townPlace = prompt("You enter town.  There is a shop and an inn. Back to the south is the field. \n Shop - shop \n Inn - Inn \n S - field").toLowerCase();
                     
                     switch(townPlace){
                         case "shop":
                             Shop();
-                            
                             break;
                         case "s":
-                            alert("you leave");
                             Field();
                             break;
+                        case "inn":
+                            Inn();
+                            break;
+                            
                         default:
                             alert("That is not a place!");
                             Town();
@@ -213,6 +215,30 @@
                                     }
                     alert("you leave town.");
                     Field();
+                }
+                
+                function Inn(){
+                    var inn = confirm("Would you like to rent a room?  It will only cost you $15! \n You have $" + inventory.mon);
+                    if(inn == true && inventory.mon >= "15"){
+                        alert("You rent a room and rest to restore your strength.");
+                        if(trueNightMare == true){
+                            alert("The next morning you are found in the room not in the bed, well not all of you at least.  Bits of your flesh are spreed about the room, it is a truely grusome sight.");
+                            alert("The only indication to the identity of your killer is a trail of slime leading to and from the broken window.\n TRUE NIGHTMARE: Bad End.");
+                            End();
+                        }
+                        else{
+                            alert("you wake up the next morning well rested and ready to continue.");
+                            Town();
+                        }
+                    }
+                    else if(inn == true && inventory.mon < "15"){
+                        alert("Despite your desire to get a room, you can't afford it and leave.");
+                        Town();
+                    }
+                    else{
+                        alert("You leave the inn.")
+                        Town();
+                    }
                 }
                 
                 
@@ -269,6 +295,9 @@
                         case "e":
                             Field();
                             break;
+                        default:
+                            alert("That doesn't exist yet.");
+                            Woods();
                     }
                 }
                 function Jelly(){
@@ -310,6 +339,7 @@
                                 default:
                                     alert("Due to not understanding the situation you hesitate for a moment.  But it only takes a moment for the limbs of the creature to remove your head.  In little time after your body is strewn about the field.  The True Nightmare spends hours shreding whatever little pieces it could find of you.");
                                     alert("You died and no one can even recognisze the bits of flesh.\n UNRECOGNIZABLE:  Bad End.");
+                                            End();
                                       }
                                         }
                             else if (weapon == "2" && inventory.steelSword > "0"){
@@ -329,6 +359,7 @@
                                 default:
                                     alert("Due to not understanding the situation you hesitate for a moment.  But it only takes a moment for the limbs of the creature to remove your head.  In little time after your body is strewn about the field.  The True Nightmare spends hours shreding whatever little pieces it could find of you.");
                                     alert("You died and no one can even recognisze the bits of flesh.\n UNRECOGNIZABLE:  Bad End.");
+                                        End();
                                       }
                                         }
                             else if (weapon == "3" && inventory.paperSword > "0"){
@@ -348,6 +379,7 @@
                                 default:
                                     alert("Due to not understanding the situation you hesitate for a moment.  But it only takes a moment for the limbs of the creature to remove your head.  In little time after your body is strewn about the field.  The True Nightmare spends hours shreding whatever little pieces it could find of you.");
                                     alert("You died and no one can even recognisze the bits of flesh.\n UNRECOGNIZABLE:  Bad End.");
+                                        End();
                                       }
                                         }
                             else if (weapon == "4"){
@@ -367,6 +399,7 @@
                                 default:
                                     alert("Due to not understanding the situation you hesitate for a moment.  But it only takes a moment for the limbs of the creature to remove your head.  In little time after your body is strewn about the field.  The True Nightmare spends hours shreding whatever little pieces it could find of you.");
                                     alert("You died and no one can even recognisze the bits of flesh.\n UNRECOGNIZABLE:  Bad End.");
+                                        End();
                                       }
                                         }
                             else if (weapon == "5" && inventory.Skirmish > "0"){
@@ -390,12 +423,75 @@
                                 Field();
                         }
                             else{
+                                alert("The claw of the creature slices through the air.  You attempt to dodge but get hit anyway.");
+                                inventory.hp = inventory.hp - 34;
+                                if (inventory.hp > "0"){
+                                    alert("Thankfully the hit isn't fatal.  You prepare for another attack.")
+                                    var weapon = prompt("Attack with what?\n 1 - Wooden sword \n 2 - Steel sword \n 3 -Paper sword \n 4 - Fist \n 5 - ?").toLowerCase();
+                                        if (weapon == "1" && inventory.woodenSword > "0"){
+                                            jellyFriend = jellyFriend - 10;
+                                            trueNightMare = true;
+                                            alert("You slash at the True Nightmare with you're wooden sword.  It doesen't do much.");
+                                            TrueNightmareBattle();
                                 
+                                      }
+                                        
+                            else if (weapon == "2" && inventory.steelSword > "0"){
+                                            jellyFriend = jellyFriend - 1000;
+                                            trueNightMare = true;
+                                            alert("You slash the True Nightmare with you're steel sword leaving a decent sized gash.");
+                                TrueNightmareBattle();
+                                            
+                               
+                                      }
+                                        
+                            else if (weapon == "3" && inventory.paperSword > "0"){
+                                            jellyFriend = jellyFriend - 3;
+                                            trueNightMare = true;
+                                            alert("You smack the True Nightmare with you're paper sword.  Why?");
+                                TrueNightmareBattle();
+                                            
+                               
+                                      }
+                                        
+                            else if (weapon == "4"){
+                                            jellyFriend = jellyFriend - 5;
+                                            trueNightMare = true;
+                                            alert("You punch the True Nightmare despite owning a sword.  But why?");
+                                            
+                                
+                                      }
+                                        
+                            else if (weapon == "5" && inventory.Skirmish > "0"){
+                                            jellyFriend = jellyFriend - 10000;
+                                            trueNightMare = true;
+                                            alert("You bring the blade of Skirmish down upon the True Nightmare cutting it cleanly in half.");
+                                            
+                                TrueNightmareBattle();
+                                        }
+                            else{
+                                alert("You don't have that.");
+                                TrueNightmareBattle();
                             }
                         }
-                    }
+                                else{
+                                    alert("Unfortunatly for you the pain becomes to unbarible and you colapse fallen in battle.\n FALLEN: Bad End.");
+                                    End();
+                                    
+                                }
+                        }
+                        }
+                                }
+                function End(){
+                    alert("This is the end.  And now back to the beginning.");
+                    Go();
+                }
+            }
+                            
+                        
+                    
                                         
-                                            }
+                                            
                     
                 
                 
