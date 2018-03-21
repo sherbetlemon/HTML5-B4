@@ -193,7 +193,7 @@ body {
     transition: all .4s ease-out;
 }
 
-.btn2:hover {
+.btn2:active {
     outline: none;
 }
 
