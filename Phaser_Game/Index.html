@@ -39,6 +39,7 @@
             var player;
             var platforms;
             var cursors;
+            var stars;
         
             function preload ()
             {
@@ -47,7 +48,7 @@
                 this.load.image('ground', 'assets/platform.png');
                 this.load.image('star', 'assets/star.png');
                 this.load.image('bomb', 'assets/bomb.png');
-                this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+                this.load.spritesheet('dude', 'assets/dude2.png', { frameWidth: 32, frameHeight: 48 });
                 
             }
         
@@ -79,7 +80,7 @@
                 
                 this.anims.create({
                     key: 'turn',
-                    frames: [ { key: ' dude', frame: 4 } ],
+                    frames: [ { key: 'dude', frame: 4 } ],
                     frameRate: 20
                 });
                 
@@ -91,8 +92,25 @@
                 });
                 
                 cursors = this.input.keyboard.createCursorKeys();
+
+                stars = this.physics.add.group({
+                    key: 'star',
+                    repeat: 11,
+                    setXY: { x: 12, y: 0, stepX: 70 }
+                });
+
+                    stars.children.iterate(function (child) {
+
+                        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+
+                });
+                
+                cursors = this.input.keyboard.createCursorKeys();
                 
                 this.physics.add.collider(player, platforms);
+                this.physics.add.collider(stars, platforms);
+
+                this.physics.add.overlap(player, stars, collectStar, null, this);
             }
         
             function update ()
@@ -113,10 +131,15 @@
                     player.anims.play('turn');
                 }
                 
-                if (cusors.up.isDown && player.body.touching.down){
+                if (cursors.up.isDown && player.body.touching.down){
                     player.setVelocityY(-330);
-                }
+                }  
+                
             }
+        function collectStar (player, star)
+                {
+                    star.disableBody(true, true);
+                }
         
         </script>
         
